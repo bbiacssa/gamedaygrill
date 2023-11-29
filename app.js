@@ -25,6 +25,7 @@ app.get("/api", async (req, res) => {
     catch (e) {
         res.status(400).send(e);
     }
+    db.end();
 });
 
 ViteExpress.listen(app, PORT, () => console.log("Server is listening on port " + PORT + "..."));
