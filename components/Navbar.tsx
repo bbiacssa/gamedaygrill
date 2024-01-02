@@ -92,9 +92,12 @@ export default function Navbar({
 						{items.length > 0 ? (
 							<div className="flex h-full flex-col gap-4 py-4">
 								<ScrollArea className="flex-grow pr-4">
-									{items.map((item) => {
+									{items.map((item, index) => {
 										return (
-											<div className="flex my-3 justify-between items-center">
+											<div
+												key={index}
+												className="flex my-3 justify-between items-center"
+											>
 												<div>
 													<h1 className="text-lg text-white font-bold">
 														{item.name}
@@ -123,7 +126,7 @@ export default function Navbar({
 								</Link>
 							</div>
 						) : (
-							<h1>you don't have anything in your cart!</h1>
+							<h1>you don&apos;t have anything in your cart!</h1>
 						)}
 					</SheetContent>
 				</Sheet>
