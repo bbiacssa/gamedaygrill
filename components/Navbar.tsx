@@ -6,8 +6,6 @@ import Image from "next/image";
 import {
 	Sheet,
 	SheetContent,
-	SheetDescription,
-	SheetFooter,
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
@@ -31,8 +29,6 @@ export const links = [
 	{ name: "about", href: "/" },
 	{ name: "menu", href: "/menu" },
 	{ name: "events", href: "/events" },
-	{ name: "contact", href: "/contact" },
-	{ name: "reserve", href: "/reserve" },
 ] as const;
 
 export default function Navbar({
@@ -43,13 +39,8 @@ export default function Navbar({
 	const { items } = useContext(CartContext);
 	return (
 		<>
-			<div className="absolute top-0 w-screen h-60 bg-gradient-to-b from-black -z-10"></div>
-			<div className="grid grid-cols-[1fr_auto_1fr] p-4 py-8 gap-4 items-center">
-				<div
-					className={
-						"pl-4 pr-48 items-center mr-auto w-full flex justify-between"
-					}
-				>
+			<div className="absolute top-0 w-full grid grid-cols-[1fr_auto_1fr] p-4 py-8 z-20 gap-4 items-center">
+				<div className={"pl-4 items-center mr-auto w-full flex gap-8"}>
 					{links.map((link) => {
 						return (
 							<Link key={link.name} href={link.href}>

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-import { MenuItem } from "./menu/page";
-import { createContext, useState } from "react";
 import CartContext from "@/components/CartContext";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const font = Source_Sans_3({ subsets: ["latin"] });
 
@@ -27,7 +26,11 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<CartContext>
-				<body className={font.className + " dark"}>{children}</body>
+				<body className={font.className + " dark bg-gunmetal"}>
+					<ScrollArea className="w-screen h-screen">
+						{children}
+					</ScrollArea>
+				</body>
 			</CartContext>
 		</html>
 	);
