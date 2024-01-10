@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 		locale: "en_US",
 		type: "website",
 	},
+	metadataBase: new URL("https://gamedaygrill-zeta.vercel.app"),
 };
 
 export default function RootLayout({

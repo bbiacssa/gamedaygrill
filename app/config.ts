@@ -14,23 +14,23 @@ type Member = {
 export const members: Member[] = [
 	{
 		image: Boss,
-		name: "Jane Doe",
+		name: "Timqmashhaay",
 		details: "something about jane",
 	},
 	{
 		image: Chef,
-		name: "John Doe",
+		name: "Versagenskind",
 		details: "something about john",
 		align: "bg-top",
 	},
 	{
 		image: Intern,
-		name: "John B Doe",
+		name: "Unbezahlteskind",
 		details: "something about john",
 	},
 	{
 		image: Waiter,
-		name: "John C Doe",
+		name: "フードドロッパー",
 		details: "something about john",
 	},
 ];
