@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Cart";
 import React from "react";
 
 export default function Events() {

@@ -7,16 +7,15 @@ import sandwich from "@/public/images/sandwich.jpg";
 import { members } from "@/app/config";
 import { Libre_Baskerville } from "next/font/google";
 
-const libre = Libre_Baskerville({
+export const Libre = Libre_Baskerville({
 	weight: "400",
 	subsets: ["latin"],
 });
 
 export default function About() {
 	return (
-		<>
+		<div className="h-screen">
 			<Navbar name="about" />
-			<div className="absolute top-0 w-full h-48 bg-gradient-to-b from-black z-10"></div>
 			<div className="h-96 relative">
 				<Image
 					src={headerImage}
@@ -26,7 +25,7 @@ export default function About() {
 				<div className="h-full w-1/2 absolute left-0 top-0 flex justify-center items-center">
 					<h1
 						className={
-							"text-5xl text-center w-2/3 " + libre.className
+							"text-5xl text-center w-2/3 " + Libre.className
 						}
 					>
 						a modern twist on a game day classic
@@ -36,7 +35,7 @@ export default function About() {
 			<div className="h-96 flex justify-center items-center flex-col">
 				<h1
 					className={
-						libre.className + " text-3xl font-bold text-beige mb-6"
+						Libre.className + " text-3xl font-bold text-beige mb-6"
 					}
 				>
 					game day, reimagined
@@ -67,7 +66,7 @@ export default function About() {
 				<div className="flex items-center justify-center flex-col">
 					<h1
 						className={
-							libre.className +
+							Libre.className +
 							" text-2xl font-bold text-beige mb-4"
 						}
 					>
@@ -85,7 +84,7 @@ export default function About() {
 			<div className="h-96 my-8">
 				<h1
 					className={
-						"text-center text-2xl text-beige " + libre.className
+						"text-center text-2xl text-beige " + Libre.className
 					}
 				>
 					our team
@@ -117,7 +116,7 @@ export default function About() {
 								<h1
 									className={
 										"font-bold mt-4 text-lg text-beige " +
-										libre.className
+										Libre.className
 									}
 								>
 									{member.name}
@@ -139,7 +138,7 @@ export default function About() {
 				<div className="text-center flex flex-col justify-center items-center h-full">
 					<h1
 						className={
-							"text-beige text-2xl mb-2 " + libre.className
+							"text-beige text-2xl mb-2 " + Libre.className
 						}
 					>
 						interested in reserving?
@@ -199,7 +198,7 @@ export default function About() {
 					<div>
 						<h1
 							className={
-								"text-beige text-2xl mb-1 " + libre.className
+								"text-beige text-2xl mb-1 " + Libre.className
 							}
 						>
 							location
@@ -212,7 +211,7 @@ export default function About() {
 					<div>
 						<h1
 							className={
-								"text-beige text-2xl mb-1 " + libre.className
+								"text-beige text-2xl mb-1 " + Libre.className
 							}
 						>
 							hours
@@ -234,6 +233,6 @@ export default function About() {
 					className="w-full h-full object-cover"
 				/>
 			</div>
-		</>
+		</div>
 	);
 }
