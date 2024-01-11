@@ -13,7 +13,7 @@ import {
 	AlertDialogFooter,
 } from "./ui/alert-dialog";
 import { ScrollArea } from "./ui/scroll-area";
-import { ShoppingCart, X } from "lucide-react";
+import { RotateCw, ShoppingCart, X } from "lucide-react";
 import { toast } from "sonner";
 import {
 	Sheet,
@@ -174,6 +174,9 @@ export default function Cart() {
 							disabled={isLoading}
 							onClick={checkout}
 						>
+							{isLoading && (
+								<RotateCw className="animate-spin mr-2 size-4" />
+							)}
 							checkout
 						</Button>
 					</div>

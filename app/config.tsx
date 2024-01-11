@@ -111,3 +111,60 @@ export const Menu: {
 		],
 	},
 ] as const;
+
+import Party from "@/public/images/party.jpg";
+import Love from "@/public/images/love.jpg";
+import SuperBowl from "@/public/images/super bowl.jpg";
+import { Libre_Baskerville } from "next/font/google";
+
+type Event = {
+	name: string;
+	description: string;
+	image: StaticImageData;
+	month:
+		| "jan"
+		| "feb"
+		| "mar"
+		| "apr"
+		| "may"
+		| "jun"
+		| "jul"
+		| "aug"
+		| "sep"
+		| "oct"
+		| "nov"
+		| "dec";
+	day: number;
+	align?: string;
+};
+
+export const Events: Event[] = [
+	{
+		name: "new years celebration",
+		description:
+			"come celebrate the new year here with us at game day grill!",
+		image: Party,
+		month: "jan",
+		day: 1,
+	},
+	{
+		name: "super bowl",
+		description:
+			"help us live up to our name by watching american football with us",
+		image: SuperBowl,
+		month: "feb",
+		day: 11,
+	},
+	{
+		name: "valentines day",
+		description: "bring a loved one with you to celebrate valentines day",
+		image: Love,
+		month: "feb",
+		day: 14,
+	},
+];
+
+export const Libre = Libre_Baskerville({
+	subsets: ["latin"],
+	weight: "400"
+})

@@ -2,9 +2,9 @@
 import { CartContext } from "@/components/CartContext";
 import Navbar from "@/components/Navbar";
 import { useContext, useState } from "react";
-import { Menu, MenuItem, Modifiers } from "@/app/config";
+import { Menu, Libre, Modifiers } from "@/app/config";
 import Image from "next/image";
-import { Libre_Baskerville, Londrina_Shadow } from "next/font/google";
+import { Libre_Baskerville, Londrina_Solid } from "next/font/google";
 import {
 	Tooltip,
 	TooltipContent,
@@ -12,20 +12,18 @@ import {
 } from "@/components/ui/tooltip";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Minus, Plus } from "lucide-react";
 
-const Londrina = Londrina_Shadow({ subsets: ["latin"], weight: "400" });
+const Londrina = Londrina_Solid({ subsets: ["latin"], weight: "400" });
 const ItalicLibre = Libre_Baskerville({
 	subsets: ["latin"],
 	weight: "400",
 	style: "italic",
 });
-const Libre = Libre_Baskerville({
-	subsets: ["latin"],
-	weight: "400",
-});
 export default function MenuComponent() {
 	if (!Menu) throw new Error("Menu not found");
-	const { items, addItem } = useContext(CartContext);
+	const { items, addItem, removeItem } = useContext(CartContext);
 	const [category, setCategory] = useState<(typeof Menu)[number]>(Menu[0]);
 	return (
 		<div className="h-screen overflow-hidden">
@@ -61,25 +59,14 @@ export default function MenuComponent() {
 										<div key={item.name}>
 											<hr className="border border-white" />
 											<div
-												onClick={() => {
-													if (addItem(item)) {
-														toast.success(
-															`added ${item.name} to cart`
-														);
-													} else {
-														toast.error(
-															`couldn't add ${item.name} to cart`
-														);
-													}
-												}}
 												key={item.name}
-												className="group cursor-pointer select-none duration-300 active:scale-95 transition-transform"
+												className="select-none"
 											>
 												<div
 													key={item.name}
 													className="p-2 py-4"
 												>
-													<div className=" flex items-center gap-2">
+													<div className="flex items-center gap-2">
 														<h1
 															className={
 																Libre.className +
@@ -114,29 +101,74 @@ export default function MenuComponent() {
 																);
 															}
 														)}
-														<svg
-															xmlns="http://www.w3.org/2000/svg"
-															width="32"
-															height="32"
-															viewBox="0 0 32 32"
-															fill="none"
-															className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+														<Button
+															variant={"ghost"}
+															size="icon"
+															className="size-8 p-1"
+															onClick={() => {
+																if (
+																	addItem(
+																		item
+																	)
+																) {
+																	toast.success(
+																		`added ${item.name} to cart`
+																	);
+																} else {
+																	toast.error(
+																		`couldn't add ${item.name} to cart`
+																	);
+																}
+															}}
 														>
-															<path
-																d="M6.66667 16H25.3333"
-																stroke="white"
-																strokeWidth="2"
-																strokeLinecap="round"
-																strokeLinejoin="round"
-															/>
-															<path
-																d="M16 6.66669V25.3334"
-																stroke="white"
-																strokeWidth="2"
-																strokeLinecap="round"
-																strokeLinejoin="round"
-															/>
-														</svg>
+															<Plus />
+														</Button>
+														<Button
+															className={
+																"size-8 p-1 transition-opacity duration-300 " +
+																(items.some(
+																	(
+																		currentItem
+																	) =>
+																		currentItem
+																			.item
+																			.name ==
+																		item.name
+																)
+																	? "opacity-100"
+																	: "opacity-0")
+															}
+															size="icon"
+															disabled={
+																!items.some(
+																	(
+																		currentItem
+																	) =>
+																		currentItem
+																			.item
+																			.name ==
+																		item.name
+																)
+															}
+															onClick={() => {
+																if (
+																	removeItem(
+																		item.name
+																	)
+																) {
+																	toast.success(
+																		`removed ${item.name} from cart`
+																	);
+																} else {
+																	toast.error(
+																		`unable to remove ${item.name} from cart`
+																	);
+																}
+															}}
+															variant="ghost"
+														>
+															<Minus className="w-full h-full" />
+														</Button>
 														<p
 															className={
 																"font-bold text-xl ml-auto tracking-wider italic " +

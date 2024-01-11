@@ -4,13 +4,7 @@ import headerImage from "@/public/images/grilled steak.png";
 import foodImage from "@/public/images/food bowl.jpg";
 import flouredHands from "@/public/images/floured hands.jpg";
 import sandwich from "@/public/images/sandwich.jpg";
-import { members } from "@/app/config";
-import { Libre_Baskerville } from "next/font/google";
-
-const Libre = Libre_Baskerville({
-	weight: "400",
-	subsets: ["latin"],
-});
+import { members, Libre } from "@/app/config";
 
 export default function About() {
 	return (
