@@ -5,7 +5,6 @@ import { useContext, useState } from "react";
 import { Menu, MenuItem, Modifiers } from "@/app/config";
 import Image from "next/image";
 import { Libre_Baskerville, Londrina_Shadow } from "next/font/google";
-import { Libre } from "@/app/page";
 import {
 	Tooltip,
 	TooltipContent,
@@ -19,6 +18,10 @@ const ItalicLibre = Libre_Baskerville({
 	subsets: ["latin"],
 	weight: "400",
 	style: "italic",
+});
+const Libre = Libre_Baskerville({
+	subsets: ["latin"],
+	weight: "400",
 });
 export default function MenuComponent() {
 	if (!Menu) throw new Error("Menu not found");

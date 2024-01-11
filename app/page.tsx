@@ -7,7 +7,7 @@ import sandwich from "@/public/images/sandwich.jpg";
 import { members } from "@/app/config";
 import { Libre_Baskerville } from "next/font/google";
 
-export const Libre = Libre_Baskerville({
+const Libre = Libre_Baskerville({
 	weight: "400",
 	subsets: ["latin"],
 });
