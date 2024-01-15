@@ -53,7 +53,7 @@ export default function MenuComponent() {
 						/>
 					);
 				})}
-				<ScrollArea className="px-12 col-span-3">
+				<ScrollArea className="px-12 col-span-3 h-screen">
 					{Menu.map((categoryItem) => {
 						return (
 							<Category
@@ -72,7 +72,6 @@ export default function MenuComponent() {
 							/>
 						);
 					})}
-					<div className="h-48"></div>
 				</ScrollArea>
 			</div>
 		</div>

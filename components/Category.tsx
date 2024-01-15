@@ -41,7 +41,7 @@ export default function Category({
 		<div
 			key={categoryItem.name}
 			className={
-				"first:mt-16 mt-24 " +
+				"first:mt-16 mt-24 last:mb-4" +
 				(categoryItem.name !== category.name ? "opacity-50" : "")
 			}
 			ref={categoryRef as LegacyRef<HTMLDivElement>}

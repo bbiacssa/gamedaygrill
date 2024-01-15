@@ -53,7 +53,7 @@ export default function Navbar({
 					alt="game day grill logo"
 					width={187}
 					height={31}
-					className="flex aspect-[187/31] w-32"
+					className="flex aspect-[187/31] w-32 select-none"
 				/>
 
 				<ShoppingCart />
