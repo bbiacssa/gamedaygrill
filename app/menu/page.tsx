@@ -22,15 +22,15 @@ export default function MenuComponent() {
 	const [category, setCategory] = useState<(typeof Menu)[number]>(Menu[0]);
 
 	useEffect(() => {
-		// set current category to the first category that is on screen
-		for (const [name, onScreen] of Object.entries(categoriesOnScreen)) {
-			if (onScreen) {
-				const category = Menu.find(
-					(category) => category.name === name
-				);
-				if (category) setCategory(category);
-				break;
-			}
+		// set current category to the last one that is on screen
+		if (categoriesOnScreen) {
+			const entries = Object.entries(categoriesOnScreen);
+			const lastIndexShown = entries.findLastIndex((entry) => entry[1]);
+			if (!entries[lastIndexShown]) return;
+			const categoryFromIndex = Menu.find(
+				(category) => category.name == entries[lastIndexShown][0]
+			);
+			if (categoryFromIndex) setCategory(categoryFromIndex);
 		}
 	}, [categoriesOnScreen]);
 
@@ -72,7 +72,7 @@ export default function MenuComponent() {
 							/>
 						);
 					})}
-					<div className="h-16"></div>
+					<div className="h-48"></div>
 				</ScrollArea>
 			</div>
 		</div>

@@ -20,7 +20,7 @@ export default function MenuItem({ item }: { item: MenuItem }) {
 		<div key={item.name}>
 			<hr className="border border-white" />
 			<div key={item.name} className="select-none">
-				<div key={item.name} className="p-2 py-4">
+				<div key={item.name} className="p-2 py-6">
 					<div className="flex items-center gap-2">
 						<h1
 							className={
