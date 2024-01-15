@@ -5,6 +5,11 @@ import Waiter from "@/public/images/waiter.jpg";
 import { Flame, Leaf } from "lucide-react";
 import { StaticImageData } from "next/image";
 
+export const BASE_URL =
+	process.env.NODE_ENV == "production"
+		? "https://gamedaygrill-bpa.vercel.app"
+		: "http://localhost:3000";
+
 export const Modifiers = {
 	spicy: <Flame className="stroke-red-400" aria-label="spicy" />,
 	vegetarian: <Leaf className="stroke-green-400" aria-label="vegetarian" />,

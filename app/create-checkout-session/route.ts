@@ -4,11 +4,7 @@ import Stripe from "stripe";
 const stripe = new Stripe(
 	"sk_test_51OU0DgERORMJ1CaSJD1FdClHt0JMrw3WbiL31yAdXYh8qi2yuv1jFMqvAl4I2K0erW52TDNG1EXLvJyhoPC5oMdG00KoqAJehl"
 );
-
-export const BASE_URL =
-	process.env.NODE_ENV == "production"
-		? "https://gamedaygrill-bpa.vercel.app"
-		: "http://localhost:3000";
+import { BASE_URL } from "@/app/config";
 
 export async function POST(req: NextRequest) {
 	const data: CartItem[] = await req.json();
