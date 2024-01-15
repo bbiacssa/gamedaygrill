@@ -1,195 +1,97 @@
 "use client";
-import { CartContext } from "@/components/CartContext";
 import Navbar from "@/components/Navbar";
-import { useContext, useState } from "react";
-import { Menu, Libre, Modifiers } from "@/app/config";
+import { RefObject, createRef, useEffect, useMemo, useState } from "react";
+import { Menu } from "@/app/config";
 import Image from "next/image";
-import { Libre_Baskerville, Londrina_Solid } from "next/font/google";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-import { Minus, Plus } from "lucide-react";
+import Category from "@/components/Category";
 
-const Londrina = Londrina_Solid({ subsets: ["latin"], weight: "400" });
-const ItalicLibre = Libre_Baskerville({
-	subsets: ["latin"],
-	weight: "400",
-	style: "italic",
-});
+export function useOnScreen(ref?: RefObject<HTMLElement>) {
+	"use client";
+	const [isIntersecting, setIntersecting] = useState(false);
+
+	const observer = useMemo(() => {
+		return new IntersectionObserver((entry) => {
+			setIntersecting(entry[0].isIntersecting);
+		});
+	}, []);
+
+	useEffect(() => {
+		if (!ref?.current) return;
+		observer.observe(ref.current);
+		return () => observer.disconnect();
+	}, []);
+
+	return isIntersecting;
+}
+
 export default function MenuComponent() {
 	if (!Menu) throw new Error("Menu not found");
-	const { items, addItem, removeItem } = useContext(CartContext);
+	const refsMap = useMemo(() => {
+		const refs = new Map<string, RefObject<HTMLElement>>();
+		Menu.forEach((category) => {
+			console.log(category.name);
+			refs.set(category.name, createRef<HTMLDivElement>());
+		});
+		return refs;
+	}, []);
+	const [categoriesOnScreen, setCategoriesOnScreen] = useState<{
+		[name: string]: boolean;
+	}>(Object.fromEntries(Menu.map((category) => [category.name, false])));
 	const [category, setCategory] = useState<(typeof Menu)[number]>(Menu[0]);
+
+	useEffect(() => {
+		// set current category to the first category that is on screen
+		for (const [name, onScreen] of Object.entries(categoriesOnScreen)) {
+			if (onScreen) {
+				const category = Menu.find(
+					(category) => category.name === name
+				);
+				if (category) setCategory(category);
+				break;
+			}
+		}
+	}, [categoriesOnScreen]);
+
 	return (
 		<div className="h-screen overflow-hidden">
 			<Navbar name="menu" />
-			<div className="grid grid-cols-2 w-full h-full">
-				<Image
-					className="h-full w-full object-cover"
-					src={category.image}
-					alt={category.name}
-				/>
-				<ScrollArea className="px-16">
+			<div className="grid grid-cols-5 w-full h-full">
+				{Menu.map((categoryItem) => {
+					return (
+						<Image
+							className={
+								"h-full w-full col-span-2 object-cover " +
+								(categoryItem.name == category.name
+									? "block"
+									: "hidden")
+							}
+							src={categoryItem.image}
+							alt={categoryItem.name}
+							key={categoryItem.name}
+						/>
+					);
+				})}
+				<ScrollArea className="px-12 col-span-3">
 					{Menu.map((categoryItem) => {
 						return (
-							<div
+							<Category
+								category={category}
+								categoryItem={categoryItem}
+								categoryRef={refsMap.get(categoryItem.name)}
+								setOnScreen={(name, onScreen) => {
+									setCategoriesOnScreen((prev) => {
+										return {
+											...prev,
+											[name]: onScreen,
+										};
+									});
+								}}
 								key={categoryItem.name}
-								className={
-									"mt-16 " +
-									(categoryItem.name !== category.name
-										? "opacity-50"
-										: "")
-								}
-							>
-								<h1
-									className={Londrina.className + " text-6xl"}
-								>
-									{categoryItem.name.toLowerCase()}
-								</h1>
-								<p className="tracking-widest text-2xl font-light mt-4 mb-8">
-									{categoryItem.description.toLowerCase()}
-								</p>
-								{categoryItem.items.map((item) => {
-									return (
-										<div key={item.name}>
-											<hr className="border border-white" />
-											<div
-												key={item.name}
-												className="select-none"
-											>
-												<div
-													key={item.name}
-													className="p-2 py-4"
-												>
-													<div className="flex items-center gap-2">
-														<h1
-															className={
-																Libre.className +
-																" text-2xl font-bold tracking-wider"
-															}
-														>
-															{item.name.toLowerCase()}
-														</h1>
-														{item.modifiers?.map(
-															(item) => {
-																return (
-																	<Tooltip
-																		key={
-																			item
-																		}
-																	>
-																		<TooltipTrigger
-																			asChild
-																		>
-																			{
-																				Modifiers[
-																					item
-																				]
-																			}
-																		</TooltipTrigger>
-																		<TooltipContent>
-																			{
-																				item
-																			}
-																		</TooltipContent>
-																	</Tooltip>
-																);
-															}
-														)}
-														<Button
-															variant={"ghost"}
-															size="icon"
-															className="size-8 p-1"
-															onClick={() => {
-																if (
-																	addItem(
-																		item
-																	)
-																) {
-																	toast.success(
-																		`added ${item.name} to cart`
-																	);
-																} else {
-																	toast.error(
-																		`couldn't add ${item.name} to cart`
-																	);
-																}
-															}}
-														>
-															<Plus />
-														</Button>
-														<Button
-															className={
-																"size-8 p-1 transition-opacity duration-300 " +
-																(items.some(
-																	(
-																		currentItem
-																	) =>
-																		currentItem
-																			.item
-																			.name ==
-																		item.name
-																)
-																	? "opacity-100"
-																	: "opacity-0")
-															}
-															size="icon"
-															disabled={
-																!items.some(
-																	(
-																		currentItem
-																	) =>
-																		currentItem
-																			.item
-																			.name ==
-																		item.name
-																)
-															}
-															onClick={() => {
-																if (
-																	removeItem(
-																		item.name
-																	)
-																) {
-																	toast.success(
-																		`removed ${item.name} from cart`
-																	);
-																} else {
-																	toast.error(
-																		`unable to remove ${item.name} from cart`
-																	);
-																}
-															}}
-															variant="ghost"
-														>
-															<Minus className="w-full h-full" />
-														</Button>
-														<p
-															className={
-																"font-bold text-xl ml-auto tracking-wider italic " +
-																ItalicLibre.className
-															}
-														>
-															{item.price}
-														</p>
-													</div>
-													<p className="text-lg font-light tracking-wide mt-1">
-														{item.description.toLowerCase()}
-													</p>
-												</div>
-											</div>
-										</div>
-									);
-								})}
-								<hr className="border border-white" />
-							</div>
+							/>
 						);
 					})}
+					<div className="h-16"></div>
 				</ScrollArea>
 			</div>
 		</div>

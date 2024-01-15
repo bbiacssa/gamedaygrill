@@ -4,7 +4,11 @@ import Stripe from "stripe";
 const stripe = new Stripe(
 	"sk_test_51OU0DgERORMJ1CaSJD1FdClHt0JMrw3WbiL31yAdXYh8qi2yuv1jFMqvAl4I2K0erW52TDNG1EXLvJyhoPC5oMdG00KoqAJehl"
 );
-const YOUR_DOMAIN = "https://gamedaygrill-zeta.vercel.app";
+
+export const BASE_URL =
+	process.env.NODE_ENV == "production"
+		? "https://gamedaygrill-bpa.vercel.app"
+		: "http://localhost:3000";
 
 export async function POST(req: NextRequest) {
 	const data: CartItem[] = await req.json();
@@ -31,9 +35,23 @@ export async function POST(req: NextRequest) {
 			shipping_address_collection: {
 				allowed_countries: ["US"],
 			},
+			custom_fields: [
+				{
+					key: "modifications",
+					label: {
+						type: "custom",
+						custom: "Order modifications",
+					},
+					type: "text",
+					optional: true,
+				},
+			],
+			phone_number_collection: {
+				enabled: true,
+			},
 			mode: "payment",
-			success_url: `${YOUR_DOMAIN}?success=true`,
-			cancel_url: `${YOUR_DOMAIN}?canceled=true`,
+			success_url: `${BASE_URL}/checkout?success=true`,
+			cancel_url: `${BASE_URL}`,
 		});
 
 		if (session.url) {

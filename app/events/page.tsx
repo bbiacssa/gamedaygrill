@@ -72,12 +72,9 @@ export default function EventsComponent() {
 				</h1>
 				<div className="bg-beige h-0.5 w-32"></div>
 				<p className="w-1/2 text-center text-xl font-light mb-12">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Nullam vitae mi sed purus dictum dictum. In vestibulum
-					tellus in sagittis ultrices. Ut sed fermentum mi. Praesent
-					vel porttitor arcu. Sed placerat quam est. Morbi eu suscipit
-					mauris. Duis at lacus sagittis, rutrum sem vitae, venenatis
-					metus. Suspendisse potenti.
+					We offer catering services for events no matter the size,
+					whether it&apos;s a small family gathering or a large
+					corporate event, we can handle it all.
 				</p>
 				<Button className="p-8 text-lg" variant="outline" size="lg">
 					Inquire now

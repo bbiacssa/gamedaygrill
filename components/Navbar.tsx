@@ -24,7 +24,7 @@ export const links = [
 export default function Navbar({
 	name,
 }: {
-	name: (typeof links)[number]["name"];
+	name: (typeof links)[number]["name"] | "none";
 }) {
 	return (
 		<>

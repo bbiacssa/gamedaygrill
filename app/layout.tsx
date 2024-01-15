@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import CartContext from "@/components/CartContext";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { BASE_URL } from "./create-checkout-session/route";
 
 const font = Source_Sans_3({ subsets: ["latin"] });
 
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 		locale: "en_US",
 		type: "website",
 	},
-	metadataBase: new URL("https://gamedaygrill-zeta.vercel.app"),
+	metadataBase: new URL(BASE_URL),
 };
 
 export default function RootLayout({
