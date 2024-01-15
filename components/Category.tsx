@@ -1,3 +1,4 @@
+"use client";
 import { Menu } from "@/app/config";
 import { LegacyRef, RefObject, useEffect, useMemo, useState } from "react";
 import { Londrina_Solid } from "next/font/google";
