@@ -9,14 +9,11 @@ function useOnScreen(ref?: RefObject<HTMLElement>) {
 	"use client";
 	const [isIntersecting, setIntersecting] = useState(false);
 
-	const observer = useMemo(() => {
-		return new IntersectionObserver((entry) => {
-			setIntersecting(entry[0].isIntersecting);
-		});
-	}, []);
-
 	useEffect(() => {
 		if (!ref?.current) return;
+		const observer = new IntersectionObserver((entry) => {
+			setIntersecting(entry[0].isIntersecting);
+		});
 		observer.observe(ref.current);
 		return () => observer.disconnect();
 	}, []);
@@ -36,7 +33,6 @@ export default function Category({
 	setOnScreen: (name: string, onScreen: boolean) => void;
 }) {
 	const onScreen = useOnScreen(categoryRef);
-	console.log(categoryItem.name, onScreen);
 	useEffect(() => {
 		setOnScreen(categoryItem.name, onScreen);
 	}, [onScreen]);
