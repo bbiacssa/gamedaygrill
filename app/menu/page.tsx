@@ -6,25 +6,6 @@ import Image from "next/image";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Category from "@/components/Category";
 
-function useOnScreen(ref?: RefObject<HTMLElement>) {
-	"use client";
-	const [isIntersecting, setIntersecting] = useState(false);
-
-	const observer = useMemo(() => {
-		return new IntersectionObserver((entry) => {
-			setIntersecting(entry[0].isIntersecting);
-		});
-	}, []);
-
-	useEffect(() => {
-		if (!ref?.current) return;
-		observer.observe(ref.current);
-		return () => observer.disconnect();
-	}, []);
-
-	return isIntersecting;
-}
-
 export default function MenuComponent() {
 	if (!Menu) throw new Error("Menu not found");
 	const refsMap = useMemo(() => {

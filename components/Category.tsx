@@ -1,9 +1,27 @@
 import { Menu } from "@/app/config";
-import React, { LegacyRef, RefObject, useEffect } from "react";
+import { LegacyRef, RefObject, useEffect, useMemo, useState } from "react";
 import { Londrina_Solid } from "next/font/google";
 import MenuItem from "./MenuItem";
-import { useOnScreen } from "@/app/menu/page";
 const Londrina = Londrina_Solid({ subsets: ["latin"], weight: "400" });
+
+function useOnScreen(ref?: RefObject<HTMLElement>) {
+	"use client";
+	const [isIntersecting, setIntersecting] = useState(false);
+
+	const observer = useMemo(() => {
+		return new IntersectionObserver((entry) => {
+			setIntersecting(entry[0].isIntersecting);
+		});
+	}, []);
+
+	useEffect(() => {
+		if (!ref?.current) return;
+		observer.observe(ref.current);
+		return () => observer.disconnect();
+	}, []);
+
+	return isIntersecting;
+}
 
 export default function Category({
 	categoryItem,
