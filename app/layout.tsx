@@ -5,7 +5,7 @@ import CartContext from "@/components/CartContext";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { BASE_URL } from "./create-checkout-session/route";
+import { BASE_URL } from "@/app/config";
 
 const font = Source_Sans_3({ subsets: ["latin"] });
 

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Category from "@/components/Category";
 
-export function useOnScreen(ref?: RefObject<HTMLElement>) {
+function useOnScreen(ref?: RefObject<HTMLElement>) {
 	"use client";
 	const [isIntersecting, setIntersecting] = useState(false);
 
