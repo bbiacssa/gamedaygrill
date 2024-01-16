@@ -50,6 +50,7 @@ export default function MenuComponent() {
 							src={categoryItem.image}
 							alt={categoryItem.name}
 							key={categoryItem.name}
+							priority={true}
 						/>
 					);
 				})}

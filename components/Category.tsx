@@ -32,6 +32,7 @@ export default function Category({
 	categoryRef?: RefObject<HTMLElement>;
 	setOnScreen: (name: string, onScreen: boolean) => void;
 }) {
+	"use client";
 	const onScreen = useOnScreen(categoryRef);
 	useEffect(() => {
 		setOnScreen(categoryItem.name, onScreen);
@@ -41,7 +42,7 @@ export default function Category({
 		<div
 			key={categoryItem.name}
 			className={
-				"first:mt-16 mt-24 last:mb-4" +
+				"first:mt-16 mt-24 last:mb-4 transition-opacity duration-300 " +
 				(categoryItem.name !== category.name ? "opacity-50" : "")
 			}
 			ref={categoryRef as LegacyRef<HTMLDivElement>}
