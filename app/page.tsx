@@ -1,52 +1,65 @@
+"use client";
 import Navbar from "@/components/Navbar";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import headerImage from "@/public/images/grilled steak.png";
 import foodImage from "@/public/images/food bowl.jpg";
 import flouredHands from "@/public/images/floured hands.jpg";
 import sandwich from "@/public/images/sandwich.jpg";
 import seizeTheOpportunity from "@/public/images/Seize the Opportunity.png";
+import { motion } from "framer-motion";
 import { members, Libre } from "@/app/config";
 
 export default function About() {
 	return (
-		<div className="h-screen">
+		<div className="w-screen">
 			<Navbar name="about" />
-			<div className="h-96 relative">
+			<div className="relative h-80 md:h-96 ">
 				<Image
+					priority={true}
 					src={headerImage}
 					alt="Meat cooked on a grill."
-					className="h-full object-cover"
+					className="h-full object-cover object-[70%_50%] opacity-50 md:opacity-85"
 				/>
-				<div className="h-full w-1/2 absolute left-0 top-0 flex justify-center items-center">
-					<h1
+				<div className="absolute left-0 top-0 flex h-full w-full items-center justify-center px-8 md:w-2/3 md:bg-gradient-to-r md:from-black md:from-50% md:px-0 lg:w-1/2">
+					<motion.h1
+						initial={{ opacity: 0, x: -20 }}
+						animate={{ opacity: 1, x: 0 }}
+						transition={{
+							duration: 1,
+						}}
 						className={
-							"text-5xl text-center w-2/3 " + Libre.className
+							"w-full text-center text-4xl sm:w-full sm:text-5xl md:w-2/3 " +
+							Libre.className
 						}
 					>
 						a modern twist on a game day classic
-					</h1>
+					</motion.h1>
 				</div>
-				<div className="grid h-96 grid-cols-2">
-					<div className="p-12">
-						<div
-							style={{
-								backgroundImage: `url('${foodImage.src}')`,
-							}}
-							className="h-full bg-cover bg-center"
-							role="img"
-							aria-label="Green Leafy Vegetable Dish in Gray Steel Bowl With Fork"
-						></div>
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.75 }}
+					viewport={{ once: true }}
+					className="sm:grid sm:h-96 sm:grid-cols-2"
+				>
+					<div className="h-48 overflow-hidden p-8 sm:h-full sm:p-12">
+						<Image
+							src={foodImage}
+							priority={true}
+							className="h-full w-full object-cover"
+							alt="A green leafy vegetable dish in a bowl."
+						/>
 					</div>
-					<div className="flex items-center justify-center flex-col">
+					<div className="flex flex-col items-center justify-center">
 						<h1
 							className={
 								Libre.className +
-								" text-2xl font-bold text-beige mb-4"
+								" lsm:text-2xl mb-4 text-2xl font-bold text-beige"
 							}
 						>
 							what we do
 						</h1>
-						<p className="font-light text-xl w-2/3 text-center">
+						<p className="w-2/3 text-center font-light sm:text-lg">
 							Game Day Grill puts a modern dining experience spin
 							on the game day classics we all know and love! By
 							using high-quality and fresh ingredients, our team
@@ -54,68 +67,73 @@ export default function About() {
 							coming back for more.
 						</p>
 					</div>
-				</div>
-				<div className="h-96 my-8">
+				</motion.div>
+				<div className="my-12 h-fit sm:my-8 sm:h-96">
 					<h1
 						className={
-							"text-center text-2xl mb-4 text-beige " +
+							"mb-4 text-center text-2xl text-beige " +
 							Libre.className
 						}
 					>
-						our team
+						choose your fighter!
 					</h1>
-					<div className="h-2/3 flex justify-center gap-24 px-12">
-						{members.map((member) => {
+					<div className="flex flex-col sm:h-2/3 sm:flex-row sm:justify-center sm:gap-8 sm:px-8 md:gap-16">
+						{members.map((member, index) => {
 							return (
-								<div
+								<motion.div
+									initial={{ opacity: 0 }}
+									whileInView={{ opacity: 1 }}
+									transition={{
+										duration: 1,
+										delay: index * 0.1,
+									}}
+									viewport={{ once: true }}
 									key={member.name}
-									className="text-center w-full"
+									className="relative flex h-48 w-full flex-col items-start justify-end text-center sm:block sm:h-auto sm:bg-opacity-0"
 								>
-									<div
+									<div className="absolute left-0 top-0 z-10 h-full w-full bg-gradient-to-r from-black to-60% sm:hidden"></div>
+									<Image
+										src={member.image}
+										alt={member.name}
 										className={
-											"bg-beige h-full w-full bg-cover bg-center " +
-											(member.align == ""
-												? "bg-center"
+											"absolute -z-10 h-full w-full bg-center object-cover sm:static " +
+											(!member.align
+												? "object-[50%_30%] sm:object-center"
 												: member.align)
 										}
-										style={{
-											backgroundImage: `url('${member.image.src}')`,
-										}}
-										role="img"
-										aria-label={member.name}
-									></div>
+									/>
 									<h1
 										className={
-											"font-bold mt-4 text-lg text-beige " +
+											"z-10 ml-4 text-2xl font-bold text-beige sm:mt-4 sm:text-xl " +
 											Libre.className
 										}
 									>
 										{member.name}
 									</h1>
-									<p className="font-light w-full">
+									<p className="z-10 mb-4 ml-4 font-light">
 										{member.details}
 									</p>
-								</div>
+								</motion.div>
 							);
 						})}
 					</div>
 				</div>
-				<div className="h-[48rem] grid grid-cols-2 grid-rows-2 font-light">
+				<div className="grid h-[48rem] grid-cols-2 grid-rows-2 font-light">
 					<Image
 						src={flouredHands}
 						quality={50}
 						alt="food bowl"
-						className="w-full h-full object-cover"
+						className="h-full w-full object-cover"
 					/>
-					<div className="text-center flex flex-col justify-center items-center h-full">
+					<div className="flex h-full flex-col items-center justify-center text-center">
 						<h1
 							className={
-								"text-beige text-2xl mb-2 " + Libre.className
+								"mb-2 text-2xl text-beige " + Libre.className
 							}
 						>
 							interested in reserving?
 						</h1>
-						<p className="w-2/3 mb-4 text-lg">
+						<p className="mb-4 w-2/3 text-lg">
 							either shoot us an email at the address shown below
 							or give us a phone call. we&apos;ll try our best to
 							save you a spot with us.
@@ -148,7 +166,7 @@ export default function About() {
 								acme@company.com
 							</a>
 						</div>
-						<div className="flex items-center font-light gap-4">
+						<div className="flex items-center gap-4 font-light">
 							<svg
 								className="scale-50"
 								xmlns="http://www.w3.org/2000/svg"
@@ -168,11 +186,11 @@ export default function About() {
 							<a href="tel:1234567890">123-456-7890</a>
 						</div>
 					</div>
-					<div className="text-center flex flex-col justify-center items-center h-full gap-4">
+					<div className="flex h-full flex-col items-center justify-center gap-4 text-center">
 						<div>
 							<h1
 								className={
-									"text-beige text-2xl mb-1 " +
+									"mb-1 text-2xl text-beige " +
 									Libre.className
 								}
 							>
@@ -186,7 +204,7 @@ export default function About() {
 						<div>
 							<h1
 								className={
-									"text-beige text-2xl mb-1 " +
+									"mb-1 text-2xl text-beige " +
 									Libre.className
 								}
 							>
@@ -206,15 +224,15 @@ export default function About() {
 					<Image
 						src={sandwich}
 						alt="food bowl"
-						className="w-full h-full object-cover"
+						className="h-full w-full object-cover"
 					/>
 				</div>
-				<div className="h-fit grid grid-cols-2 tracking-wider font-normal mt-8 bg-zinc-900">
-					<div className="flex items-center flex-col justify-center gap-2 text-sm">
+				<div className="mt-8 grid h-fit grid-cols-2 bg-zinc-900 font-normal tracking-wider">
+					<div className="flex flex-col items-center justify-center gap-2 text-sm">
 						<h1
 							className={
 								Libre.className +
-								" text-xl text-beige tracking-normal"
+								" text-xl tracking-normal text-beige"
 							}
 						>
 							Ben Barber Innovation Academy &mdash; Chapter 1
@@ -230,7 +248,7 @@ export default function About() {
 						<Image
 							src={seizeTheOpportunity}
 							alt={"Seize the Opportunity"}
-							className="w-3/5 my-4 p-6 bg-white"
+							className="my-4 w-3/5 bg-white p-6"
 						/>
 					</div>
 				</div>

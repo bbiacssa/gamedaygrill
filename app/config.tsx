@@ -41,12 +41,13 @@ export const members: Member[] = [
 		image: Chef,
 		name: "Kaleb N.",
 		details: "Head Chef",
-		align: "bg-top",
+		align: "object-top",
 	},
 	{
 		image: Intern,
 		name: "Daniel M.",
 		details: "Owner and Creator",
+		align: "object-[50%_40%]",
 	},
 	{
 		image: Waiter,
