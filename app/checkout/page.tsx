@@ -13,12 +13,12 @@ export default function Page() {
 	return (
 		<>
 			<Navbar name={"none"} />
-			<div className="h-screen grid place-items-center text-center">
+			<div className="grid h-screen place-items-center text-center">
 				{success ? (
 					<div>
 						<div className="flex items-center gap-4">
 							<Check className="stroke-green-400" />
-							<h1 className="text-2xl text-green-400 font-bold">
+							<h1 className="text-2xl font-bold text-green-400">
 								Your order has been processed successfully!
 							</h1>
 							<Check className="stroke-green-400" />
@@ -30,15 +30,15 @@ export default function Page() {
 						<Link href="/">
 							<Button size="lg" className="group mt-4">
 								Head home?
-								<ArrowRight className="size-4 ml-1 group-hover:translate-x-2 transition-all" />
+								<ArrowRight className="ml-1 size-4 transition-all group-hover:translate-x-2" />
 							</Button>
 						</Link>
 					</div>
 				) : (
 					<div className="flex flex-col items-center gap-2">
-						<div className="flex gap-4 items-center">
+						<div className="flex items-center gap-4">
 							<AlertCircle className="stroke-red-400" />
-							<span className="text-2xl text-red-400 font-bold">
+							<span className="text-2xl font-bold text-red-400">
 								Something went wrong!
 							</span>
 							<AlertCircle className="stroke-red-400" />
@@ -50,7 +50,7 @@ export default function Page() {
 						<Link href="/">
 							<Button size="lg" className="group mt-4">
 								Head home?
-								<ArrowRight className="size-4 ml-1 group-hover:translate-x-2 transition-all" />
+								<ArrowRight className="ml-1 size-4 transition-all group-hover:translate-x-2" />
 							</Button>
 						</Link>
 					</div>
