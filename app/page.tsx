@@ -94,6 +94,7 @@ export default function About() {
 									<div className="absolute left-0 top-0 z-10 h-full w-full bg-gradient-to-r from-black to-60% sm:hidden"></div>
 									<Image
 										src={member.image}
+										priority={true}
 										alt={member.name}
 										className={
 											"absolute -z-10 h-full w-full bg-center object-cover sm:static " +
@@ -121,6 +122,7 @@ export default function About() {
 				<div className="grid h-[48rem] grid-cols-2 grid-rows-2 font-light">
 					<Image
 						src={flouredHands}
+						priority={true}
 						quality={50}
 						alt="food bowl"
 						className="h-full w-full object-cover"
@@ -222,6 +224,7 @@ export default function About() {
 						</div>
 					</div>
 					<Image
+						priority={true}
 						src={sandwich}
 						alt="food bowl"
 						className="h-full w-full object-cover"
@@ -246,6 +249,7 @@ export default function About() {
 					</div>
 					<div className="grid place-items-center p-4">
 						<Image
+							priority={true}
 							src={seizeTheOpportunity}
 							alt={"Seize the Opportunity"}
 							className="my-4 w-3/5 bg-white p-6"
