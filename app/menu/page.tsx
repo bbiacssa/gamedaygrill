@@ -54,7 +54,7 @@ export default function MenuComponent() {
 			<Navbar name="menu" />
 			<div className="grid h-full w-full grid-cols-5">
 				<div className="relative col-span-2">
-					{Menu.map((categoryItem, index) => {
+					{Menu.map((categoryItem) => {
 						return (
 							<div key={categoryItem.name}>
 								<motion.div

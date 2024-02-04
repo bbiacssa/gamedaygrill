@@ -119,23 +119,24 @@ export default function About() {
 						})}
 					</div>
 				</div>
-				<div className="grid h-[48rem] grid-cols-2 grid-rows-2 font-light">
+				<div className="grid h-[40rem] grid-cols-5 grid-rows-2 font-light md:h-[48rem] md:grid-cols-2">
 					<Image
 						src={flouredHands}
 						priority={true}
 						quality={50}
 						alt="food bowl"
-						className="h-full w-full object-cover"
+						className="col-span-2 h-full w-full object-cover md:col-span-1"
 					/>
-					<div className="flex h-full flex-col items-center justify-center text-center">
+					<div className="col-span-3 flex h-full flex-col items-center justify-center text-center md:col-span-1">
 						<h1
 							className={
-								"mb-2 text-2xl text-beige " + Libre.className
+								"mb-2 text-lg text-beige md:text-2xl " +
+								Libre.className
 							}
 						>
 							interested in reserving?
 						</h1>
-						<p className="mb-4 w-2/3 text-lg">
+						<p className="mb-4 w-2/3 md:text-lg">
 							either shoot us an email at the address shown below
 							or give us a phone call. we&apos;ll try our best to
 							save you a spot with us.
@@ -188,17 +189,17 @@ export default function About() {
 							<a href="tel:1234567890">123-456-7890</a>
 						</div>
 					</div>
-					<div className="flex h-full flex-col items-center justify-center gap-4 text-center">
+					<div className="col-span-3 flex h-full flex-col items-center justify-center gap-4 text-center md:col-span-1">
 						<div>
 							<h1
 								className={
-									"mb-1 text-2xl text-beige " +
+									"mb-1 text-lg text-beige md:text-2xl " +
 									Libre.className
 								}
 							>
 								location
 							</h1>
-							<p className="text-xl">
+							<p className="md:text-xl">
 								2645 Wilkinson Street <br />
 								Windsor Mill, MA 21244
 							</p>
@@ -206,13 +207,13 @@ export default function About() {
 						<div>
 							<h1
 								className={
-									"mb-1 text-2xl text-beige " +
+									"mb-1 text-lg text-beige md:text-2xl " +
 									Libre.className
 								}
 							>
 								hours
 							</h1>
-							<p className="text-xl">
+							<p className="md:text-xl">
 								<b>Lunch</b>
 								<br />
 								11am - 2pm
@@ -227,18 +228,18 @@ export default function About() {
 						priority={true}
 						src={sandwich}
 						alt="food bowl"
-						className="h-full w-full object-cover"
+						className="col-span-2 h-full w-full object-cover md:col-span-1"
 					/>
 				</div>
-				<div className="mt-8 grid h-fit grid-cols-2 bg-zinc-900 font-normal tracking-wider">
-					<div className="flex flex-col items-center justify-center gap-2 text-sm">
+				<div className="mt-8 grid h-fit grid-cols-5 bg-zinc-900 font-normal tracking-wider md:grid-cols-2">
+					<div className="col-span-3 flex flex-col items-center justify-center gap-1 p-4 text-center text-sm md:col-span-1 md:gap-2">
 						<h1
 							className={
 								Libre.className +
-								" text-xl tracking-normal text-beige"
+								" tracking-normal text-beige md:text-xl"
 							}
 						>
-							Ben Barber Innovation Academy &mdash; Chapter 1
+							Ben Barber Innovation Academy <br /> Chapter 1
 							&mdash; 02-0872
 						</h1>
 						<h1 className="">
@@ -247,12 +248,12 @@ export default function About() {
 						<h1>Ben Barber Innovation Academy</h1>
 						<h1>Mansfield, TX</h1>
 					</div>
-					<div className="grid place-items-center p-4">
+					<div className="order-1 col-span-2 grid place-items-center md:col-span-1 md:p-4">
 						<Image
 							priority={true}
 							src={seizeTheOpportunity}
 							alt={"Seize the Opportunity"}
-							className="my-4 w-3/5 bg-white p-6"
+							className="my-4 h-full bg-white object-contain p-2 md:h-fit md:w-4/5 md:p-6"
 						/>
 					</div>
 				</div>
