@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import MenuItem from "@/components/MenuItem";
 import {
 	useScroll,
-	motion,
 	useTransform,
 	useMotionValueEvent,
 	useSpring,
@@ -18,7 +17,7 @@ const Londrina = Londrina_Solid({
 	subsets: ["latin"],
 });
 
-export default function page() {
+export default function Page() {
 	const [scroll, setScroll] = useState<number>(0.4);
 	const { scrollYProgress } = useScroll();
 	const clampedYProgress = useTransform(scrollYProgress, [0, 1], [0.3, 0.7]);
@@ -58,7 +57,9 @@ export default function page() {
 					</div>
 					<div className="p-4">
 						{item.items.map((menuItem) => {
-							return <MenuItem item={menuItem} />;
+							return (
+								<MenuItem key={menuItem.name} item={menuItem} />
+							);
 						})}
 					</div>
 				</div>
