@@ -4,6 +4,8 @@ import React, { ReactNode } from "react";
 import { useState, useEffect } from "react";
 
 function getWindowDimensions() {
+	"use client";
+	if (!window) return;
 	const { innerWidth: width, innerHeight: height } = window;
 	return {
 		width,
