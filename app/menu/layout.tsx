@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 function getWindowDimensions() {
 	"use client";
-	if (!window) return;
+	if (typeof window == "undefined") return { width: 0, height: 0 };
 	const { innerWidth: width, innerHeight: height } = window;
 	return {
 		width,
@@ -33,5 +33,7 @@ function useWindowDimensions() {
 export default function Layout({ mobile, desktop }: any) {
 	const dimensions = useWindowDimensions();
 
-	return <div>{dimensions.width >= 768 ? desktop : mobile}</div>;
+	return (
+		<div>{dimensions && dimensions.width >= 768 ? desktop : mobile}</div>
+	);
 }
