@@ -23,20 +23,29 @@ export default function MenuComponent() {
 	const [previousCategory, setPreviousCategory] = useState<
 		(typeof Menu)[number]
 	>(Menu[0]);
+	const [direction, setDirection] = useState<"forward" | "backward">(
+		"forward"
+	);
 
 	useEffect(() => {
 		// set current category to the last one that is on screen
 		if (categoriesOnScreen) {
 			const entries = Object.entries(categoriesOnScreen);
 			const lastIndexShown = entries.findLastIndex((entry) => entry[1]);
+			const previousIndex = entries.findLastIndex(
+				(entry) => entry[0] == category.name
+			);
 			if (!entries[lastIndexShown]) return;
 			const categoryFromIndex = Menu.find(
 				(category) => category.name == entries[lastIndexShown][0]
 			);
 			if (categoryFromIndex?.name != category.name) {
+				const direction =
+					previousIndex - lastIndexShown > 0 ? "backward" : "forward";
 				console.log(
-					`transitioning from ${category.name} to ${categoryFromIndex?.name}`
+					`transitioning from ${category.name} to ${categoryFromIndex?.name}, in the ${direction} direction`
 				);
+				setDirection(direction);
 				setPreviousCategory(category);
 			}
 			if (categoryFromIndex) setCategory(categoryFromIndex);
@@ -65,14 +74,27 @@ export default function MenuComponent() {
 												? 0
 												: category.name ==
 													  categoryItem.name
-													? "-100%"
-													: "100%",
+													? direction == "forward"
+														? "100%"
+														: "-100%"
+													: direction == "forward"
+														? "-100%"
+														: "100%",
 									}}
 									animate={{
 										y:
 											categoryItem.name == category.name
 												? 0
-												: "100%",
+												: direction == "forward"
+													? "-100%"
+													: "100%",
+									}}
+									transition={{
+										duration: 0.5,
+										ease: (x) =>
+											x === 1
+												? 1
+												: 1 - Math.pow(2, -10 * x),
 									}}
 									key={category.name}
 									className={"absolute h-full w-full"}

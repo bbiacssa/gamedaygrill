@@ -11,7 +11,7 @@ import { members, Libre } from "@/app/config";
 
 export default function About() {
 	return (
-		<div className="w-screen">
+		<div className="w-full">
 			<Navbar name="about" />
 			<div className="relative h-80 md:h-96 ">
 				<Image

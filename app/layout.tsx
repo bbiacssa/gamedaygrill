@@ -32,11 +32,7 @@ export default function RootLayout({
 			<CartContext>
 				<body className={font.className + " dark bg-gunmetal"}>
 					<Toaster position="bottom-left" richColors />
-					<TooltipProvider>
-						<ScrollArea className="w-screen h-screen">
-							{children}
-						</ScrollArea>
-					</TooltipProvider>
+					<TooltipProvider>{children}</TooltipProvider>
 				</body>
 			</CartContext>
 		</html>
