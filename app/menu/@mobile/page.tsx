@@ -20,7 +20,11 @@ const Londrina = Londrina_Solid({
 export default function Page() {
 	const [scroll, setScroll] = useState<number>(0.4);
 	const { scrollYProgress } = useScroll();
-	const clampedYProgress = useTransform(scrollYProgress, [0, 1], [0.3, 0.7]);
+	const clampedYProgress = useTransform(
+		scrollYProgress,
+		[0, 1],
+		[0.35, 0.65]
+	);
 	const springYProgress = useSpring(clampedYProgress, {
 		bounce: 0.1,
 	});

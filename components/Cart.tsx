@@ -52,10 +52,10 @@ export default function Cart() {
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
-				<div className="hover:bg-zinc-800 active:scale-95 right-8 rounded-md size-12 absolute grid place-items-center bg-zinc-700 transition-all cursor-pointer">
+				<div className="absolute right-8 -z-10 grid size-12 cursor-pointer place-items-center rounded-md bg-zinc-700 transition-all hover:bg-zinc-800 active:scale-95">
 					<ShoppingCart size={24} />
 					{items.length > 0 && (
-						<div className="absolute text-sm -right-2 -top-2 size-6 bg-red-700 rounded-full grid place-items-center">
+						<div className="absolute -right-2 -top-2 grid size-6 place-items-center rounded-full bg-red-700 text-sm">
 							<span>
 								{items.reduce((a, b) => a + b.quantity, 0)}
 							</span>
@@ -76,16 +76,16 @@ export default function Cart() {
 										<AlertDialogTrigger asChild>
 											<div
 												key={index}
-												className="flex active:scale-95 transition-transform duration-300 cursor-pointer select-none group my-3 justify-between items-center"
+												className="group my-3 flex cursor-pointer select-none items-center justify-between transition-transform duration-300 active:scale-95"
 											>
 												<div>
 													<div className="flex items-center gap-2">
-														<h1 className="text-lg text-white font-bold">
+														<h1 className="text-lg font-bold text-white">
 															{currentItem.quantity >
 															1
 																? currentItem.quantity +
-																  "x " +
-																  currentItem
+																	"x " +
+																	currentItem
 																		.item
 																		.name
 																: currentItem
@@ -94,7 +94,7 @@ export default function Cart() {
 														</h1>
 														<X
 															strokeWidth={3}
-															className="opacity-0 group-hover:opacity-100 duration-300 transition-opacity size-4 stroke-red-400 mr-2"
+															className="mr-2 size-4 stroke-red-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
 														/>
 													</div>
 
@@ -106,7 +106,7 @@ export default function Cart() {
 													</h2>
 												</div>
 
-												<h3 className="font-bold text-sm text-white">
+												<h3 className="text-sm font-bold text-white">
 													$
 													{(
 														currentItem.item.price *
@@ -175,7 +175,7 @@ export default function Cart() {
 							onClick={checkout}
 						>
 							{isLoading && (
-								<RotateCw className="animate-spin mr-2 size-4" />
+								<RotateCw className="mr-2 size-4 animate-spin" />
 							)}
 							checkout
 						</Button>

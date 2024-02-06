@@ -59,78 +59,83 @@ export default function MenuComponent() {
 	}, [category]);
 
 	return (
-		<div className="h-screen overflow-hidden">
+		<>
 			<Navbar name="menu" />
-			<div className="grid h-full w-full grid-cols-5">
-				<div className="relative col-span-2">
-					{Menu.map((categoryItem) => {
-						return (
-							<div key={categoryItem.name}>
-								<motion.div
-									initial={{
-										y:
-											previousCategory.name ==
-											categoryItem.name
-												? 0
-												: category.name ==
-													  categoryItem.name
-													? direction == "forward"
-														? "100%"
-														: "-100%"
+			<div className="h-screen overflow-hidden">
+				<div className="grid h-full w-full grid-cols-5">
+					<div className="relative col-span-1 lg:col-span-2">
+						{Menu.map((categoryItem) => {
+							return (
+								<div key={categoryItem.name}>
+									<motion.div
+										initial={{
+											y:
+												previousCategory.name ==
+												categoryItem.name
+													? 0
+													: category.name ==
+														  categoryItem.name
+														? direction == "forward"
+															? "100%"
+															: "-100%"
+														: direction == "forward"
+															? "-100%"
+															: "100%",
+										}}
+										animate={{
+											y:
+												categoryItem.name ==
+												category.name
+													? 0
 													: direction == "forward"
 														? "-100%"
 														: "100%",
+										}}
+										transition={{
+											duration: 0.5,
+											ease: (x) =>
+												x === 1
+													? 1
+													: 1 - Math.pow(2, -10 * x),
+										}}
+										key={category.name}
+										className={"absolute h-full w-full"}
+									>
+										<Image
+											className={
+												"h-full w-full object-cover"
+											}
+											src={categoryItem.image}
+											alt={categoryItem.name}
+											priority={true}
+										/>
+									</motion.div>
+								</div>
+							);
+						})}
+					</div>
+					<ScrollArea className="col-span-4 h-screen px-12 lg:col-span-3">
+						{Menu.map((categoryItem) => {
+							return (
+								<Category
+									category={category}
+									categoryItem={categoryItem}
+									categoryRef={refsMap.get(categoryItem.name)}
+									setOnScreen={(name, onScreen) => {
+										setCategoriesOnScreen((prev) => {
+											return {
+												...prev,
+												[name]: onScreen,
+											};
+										});
 									}}
-									animate={{
-										y:
-											categoryItem.name == category.name
-												? 0
-												: direction == "forward"
-													? "-100%"
-													: "100%",
-									}}
-									transition={{
-										duration: 0.5,
-										ease: (x) =>
-											x === 1
-												? 1
-												: 1 - Math.pow(2, -10 * x),
-									}}
-									key={category.name}
-									className={"absolute h-full w-full"}
-								>
-									<Image
-										className={"h-full w-full object-cover"}
-										src={categoryItem.image}
-										alt={categoryItem.name}
-										priority={true}
-									/>
-								</motion.div>
-							</div>
-						);
-					})}
+									key={categoryItem.name}
+								/>
+							);
+						})}
+					</ScrollArea>
 				</div>
-				<ScrollArea className="col-span-3 h-screen px-12">
-					{Menu.map((categoryItem) => {
-						return (
-							<Category
-								category={category}
-								categoryItem={categoryItem}
-								categoryRef={refsMap.get(categoryItem.name)}
-								setOnScreen={(name, onScreen) => {
-									setCategoriesOnScreen((prev) => {
-										return {
-											...prev,
-											[name]: onScreen,
-										};
-									});
-								}}
-								key={categoryItem.name}
-							/>
-						);
-					})}
-				</ScrollArea>
 			</div>
-		</div>
+		</>
 	);
 }

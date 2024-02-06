@@ -1,9 +1,12 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Rubik } from "next/font/google";
 import Image from "next/image";
 import ShoppingCart from "./Cart";
+import { useWindowDimensions } from "@/lib/useWindowDimensions";
+import { Plus } from "lucide-react";
+import { motion } from "framer-motion";
 
 const lightRubik = Rubik({
 	subsets: ["latin"],
@@ -21,6 +24,76 @@ export const links = [
 	{ name: "events", href: "/events" },
 ] as const;
 
+function Navigation({
+	name,
+}: {
+	name: (typeof links)[number]["name"] | "none";
+}) {
+	const [drawerOpen, setDrawerOpen] = useState(false);
+	const [isCollapsed, setCollapsed] = useState(false);
+	const dimensions = useWindowDimensions();
+
+	useEffect(() => {
+		setCollapsed((dimensions && dimensions.width <= 640) ?? false);
+	}, [dimensions]);
+
+	return isCollapsed ? (
+		<div className="relative select-none">
+			<div className="flex gap-2">
+				<motion.div
+					animate={{
+						rotateZ: drawerOpen ? 45 : 0,
+					}}
+					onClick={() => setDrawerOpen(!drawerOpen)}
+				>
+					<Plus />
+				</motion.div>
+				<span
+					className={`text-base tracking-widest ${boldRubik.className}`}
+				>
+					{name.toUpperCase()}
+				</span>
+			</div>
+			<div className="absolute left-0 right-0 w-full text-center">
+				<div
+					className={
+						"absolute -z-10 h-full w-full bg-black p-4 blur-xl " +
+						(drawerOpen ? "block" : "hidden")
+					}
+				></div>
+				{drawerOpen &&
+					links
+						.filter((link) => link.name !== name)
+						.map((link) => (
+							<Link
+								className={`mt-1 block text-base tracking-widest ${lightRubik.className}`}
+								key={link.name}
+								href={link.href}
+							>
+								{link.name.toUpperCase()}
+							</Link>
+						))}
+			</div>
+		</div>
+	) : (
+		links.map((link) => {
+			return (
+				<Link key={link.name} href={link.href}>
+					<span
+						className={`text-base tracking-widest ${
+							name == link.name
+								? boldRubik.className
+								: lightRubik.className
+						}`}
+					>
+						{link.name.toUpperCase()}
+					</span>
+				</Link>
+			);
+		})
+	);
+}
+
 export default function Navbar({
 	name,
 }: {
@@ -28,24 +101,10 @@ export default function Navbar({
 }) {
 	return (
 		<>
-			<div className="pointer-events-none absolute top-0 w-full h-32 bg-gradient-to-b from-black z-10"></div>
-			<div className="absolute top-0 w-full grid grid-cols-[1fr_auto_1fr] p-4 py-8 z-20 gap-4 items-center">
-				<div className={"pl-4 items-center mr-auto w-full flex gap-8"}>
-					{links.map((link) => {
-						return (
-							<Link key={link.name} href={link.href}>
-								<span
-									className={`tracking-widest text-base ${
-										name == link.name
-											? boldRubik.className
-											: lightRubik.className
-									}`}
-								>
-									{link.name.toUpperCase()}
-								</span>
-							</Link>
-						);
-					})}
+			<div className="pointer-events-none fixed z-10 h-32 w-full bg-gradient-to-b from-black"></div>
+			<div className="fixed z-20 grid w-full grid-cols-[1fr_auto_1fr] items-center gap-4 p-4 py-8">
+				<div className={"mr-auto flex w-full items-center gap-8 pl-4"}>
+					<Navigation name={name} />
 				</div>
 
 				<Image
