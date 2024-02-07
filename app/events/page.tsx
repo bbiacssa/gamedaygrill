@@ -17,9 +17,9 @@ export default function EventsComponent() {
 	return (
 		<>
 			<Navbar name="events" />
-			<div className="grid place-items-center h-[100vh]">
+			<div className="grid h-[100vh] place-items-center">
 				<Carousel
-					className="w-2/3 h-2/3"
+					className="h-2/3 w-3/4 md:w-2/3"
 					opts={{
 						loop: true,
 					}}
@@ -35,17 +35,17 @@ export default function EventsComponent() {
 										src={event.image}
 										alt={event.name}
 										className={
-											"absolute top-0 left-0 pl-4 h-full w-full object-cover " +
+											"absolute left-0 top-0 h-full w-full object-cover pl-4 " +
 											event.align
 										}
 									/>
-									<div className="absolute w-[calc(100%_-_1rem)] bottom-0 bg-gradient-to-t from-black z-10 h-1/2"></div>
-									<div className="w-full h-fit absolute bottom-0 flex items-end gap-4 z-20 pr-20">
-										<div className="w-20 h-fit bg-zinc-800 z-10 flex items-center justify-end flex-col p-2">
+									<div className="absolute bottom-0 z-10 h-1/2 w-[calc(100%_-_1rem)] bg-gradient-to-t from-black"></div>
+									<div className="absolute bottom-0 z-20 flex h-fit w-full items-end gap-4 pr-20">
+										<div className="z-10 flex h-fit w-20 flex-col items-center justify-end bg-zinc-800 p-2">
 											<h1 className="text-4xl">
 												{event.day}
 											</h1>
-											<h1 className="tracking-widest font-light text-xl">
+											<h1 className="text-xl font-light tracking-widest">
 												{event.month}
 											</h1>
 										</div>
@@ -66,20 +66,30 @@ export default function EventsComponent() {
 					<CarouselPrevious />
 				</Carousel>
 			</div>
-			<div className="flex flex-col items-center gap-6 h-96">
-				<h1 className={Libre.className + " text-beige text-3xl"}>
+			<div className="flex h-96 flex-col items-center gap-6">
+				<h1
+					className={
+						Libre.className + " text-xl text-beige md:text-3xl"
+					}
+				>
 					planning out a gathering?
 				</h1>
-				<div className="bg-beige h-0.5 w-32"></div>
-				<p className="w-1/2 text-center text-xl font-light mb-12">
+				<div className="h-0.5 w-32 bg-beige"></div>
+				<p className="mb-2 w-2/3 text-center text-lg font-light md:mb-4 md:w-1/2 md:text-xl">
 					We offer catering services for events no matter the size,
 					whether it&apos;s a small family gathering or a large
 					corporate event, we can handle it all.
 				</p>
-				<Button className="p-8 text-lg" variant="outline" size="lg">
-					Inquire now
-					<ArrowRight className="ml-2" />
-				</Button>
+				<a href="mailto:">
+					<Button
+						className="p-6 text-lg md:p-8"
+						variant="outline"
+						size="lg"
+					>
+						Inquire now
+						<ArrowRight className="ml-2" />
+					</Button>
+				</a>
 			</div>
 		</>
 	);

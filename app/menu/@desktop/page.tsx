@@ -42,21 +42,12 @@ export default function MenuComponent() {
 			if (categoryFromIndex?.name != category.name) {
 				const direction =
 					previousIndex - lastIndexShown > 0 ? "backward" : "forward";
-				console.log(
-					`transitioning from ${category.name} to ${categoryFromIndex?.name}, in the ${direction} direction`
-				);
 				setDirection(direction);
 				setPreviousCategory(category);
 			}
 			if (categoryFromIndex) setCategory(categoryFromIndex);
 		}
 	}, [categoriesOnScreen]);
-
-	useEffect(() => {
-		console.log(
-			`current category: ${category.name}, previous category: ${previousCategory.name}`
-		);
-	}, [category]);
 
 	return (
 		<>

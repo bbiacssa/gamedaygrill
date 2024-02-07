@@ -70,14 +70,18 @@ export default function About() {
 						</div>
 					</motion.div>
 					<div className="my-12 h-fit sm:my-8 sm:h-96">
-						<h1
+						<motion.h1
+							initial={{ opacity: 0 }}
+							whileInView={{ opacity: 1 }}
+							transition={{ duration: 0.75 }}
+							viewport={{ once: true }}
 							className={
 								"mb-4 text-center text-2xl text-beige " +
 								Libre.className
 							}
 						>
-							choose your fighter!
-						</h1>
+							our team
+						</motion.h1>
 						<div className="flex flex-col sm:h-2/3 sm:flex-row sm:justify-center sm:gap-8 sm:px-8 md:gap-16">
 							{members.map((member, index) => {
 								return (
@@ -120,7 +124,13 @@ export default function About() {
 							})}
 						</div>
 					</div>
-					<div className="grid h-[40rem] grid-cols-5 grid-rows-2 font-light md:h-[48rem] md:grid-cols-2">
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 1 }}
+						viewport={{ once: true }}
+						className="grid h-[40rem] grid-cols-5 grid-rows-2 font-light md:h-[48rem] md:grid-cols-2"
+					>
 						<Image
 							src={flouredHands}
 							priority={true}
@@ -128,7 +138,11 @@ export default function About() {
 							alt="food bowl"
 							className="col-span-2 h-full w-full object-cover md:col-span-1"
 						/>
-						<div className="col-span-3 flex h-full flex-col items-center justify-center text-center md:col-span-1">
+						<motion.div
+							initial={{ opacity: 0, y: -20 }}
+							animate={{ opacity: 1, y: 0 }}
+							className="col-span-3 flex h-full flex-col items-center justify-center text-center md:col-span-1"
+						>
 							<h1
 								className={
 									"mb-2 text-lg text-beige md:text-2xl " +
@@ -189,7 +203,7 @@ export default function About() {
 								</svg>
 								<a href="tel:1234567890">123-456-7890</a>
 							</div>
-						</div>
+						</motion.div>
 						<div className="col-span-3 flex h-full flex-col items-center justify-center gap-4 text-center md:col-span-1">
 							<div>
 								<h1
@@ -231,8 +245,14 @@ export default function About() {
 							alt="food bowl"
 							className="col-span-2 h-full w-full object-cover md:col-span-1"
 						/>
-					</div>
-					<div className="mt-8 grid h-fit grid-cols-5 bg-zinc-900 font-normal tracking-wider md:grid-cols-2">
+					</motion.div>
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 1 }}
+						viewport={{ once: true }}
+						className="mt-8 grid h-fit grid-cols-5 bg-zinc-900 font-normal tracking-wider md:grid-cols-2"
+					>
 						<div className="col-span-3 flex flex-col items-center justify-center gap-1 p-4 text-center text-sm md:col-span-1 md:gap-2">
 							<h1
 								className={
@@ -257,7 +277,7 @@ export default function About() {
 								className="my-4 h-full bg-white object-contain p-2 md:h-fit md:w-4/5 md:p-6"
 							/>
 						</div>
-					</div>
+					</motion.div>
 				</div>
 			</div>
 		</div>
