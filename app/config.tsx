@@ -292,6 +292,9 @@ export const Menu: {
 import Party from "@/public/images/party.jpg";
 import Love from "@/public/images/love.jpg";
 import SuperBowl from "@/public/images/super bowl.jpg";
+import SaintPatricks from "@/public/images/saint patricks.jpg";
+import Easter from "@/public/images/easter.jpg";
+import MemorialDay from "@/public/images/memorial day.jpg";
 import { Libre_Baskerville } from "next/font/google";
 
 type Event = {
@@ -317,26 +320,53 @@ type Event = {
 
 export const Events: Event[] = [
 	{
-		name: "new years celebration",
-		description:
-			"come celebrate the new year here with us at game day grill!",
-		image: Party,
-		month: "jan",
-		day: 1,
-	},
-	{
 		name: "super bowl",
 		description:
-			"help us live up to our name by watching american football with us",
+			"help us live up to our name by watching american football with us. we'll have a special menu and drink specials all day long!",
 		image: SuperBowl,
 		month: "feb",
 		day: 11,
+		align: "object-[50%_60%]",
 	},
 	{
 		name: "valentines day",
-		description: "bring a loved one with you to celebrate valentines day",
+		description:
+			"bring a loved one with you to celebrate valentines day, and get a free dessert!",
 		image: Love,
 		month: "feb",
+		day: 14,
+		align: "object-[50%_90%]",
+	},
+	{
+		name: "st. patricks day",
+		description:
+			"hope you're wearing green, because we're celebrating st. patty's day with a bang. don't get pinched!",
+		image: SaintPatricks,
+		month: "mar",
+		day: 17,
+	},
+	{
+		name: "easter",
+		description:
+			"we're hosting an easter egg hunt for the kids, and a special easter brunch for the adults. find the golden egg and win a prize!",
+		image: Easter,
+		month: "mar",
+		day: 31,
+	},
+	{
+		name: "memorial day",
+		description:
+			"join us for a special memorial day event, where we'll be honoring our veterans and active duty military!",
+		image: MemorialDay,
+		month: "may",
+		day: 27,
+	},
+	{
+		name: "anniversary",
+		description:
+			"come celebrate our anniversary with us! as a thank you to our loyal customers, we'll be offering a special discount on all food and drinks for a limited time!",
+		image: Party,
+		month: "nov",
 		day: 14,
 	},
 ];
