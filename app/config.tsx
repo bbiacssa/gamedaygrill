@@ -71,6 +71,41 @@ export const Menu: {
 	items: MenuItem[];
 }[] = [
 	{
+		name: "Appetizers",
+		image: Nachos,
+		description: "Pre-game Snacks",
+		items: [
+			{
+				name: "7 Layer Nachos",
+				description:
+					"a great new twist on the classic 7 layers, these sharable nachos are adjourned with beans, sour cream, guacamole, cheese, green onions, olives, and tomatoes",
+				price: 12,
+				modifiers: ["vegetarian"],
+			},
+			{
+				name: "Green Chile Queso",
+				description:
+					"This spicy and sharable 3-cheese queso is served with chips and will be enjoyed by the whole party",
+				price: 10,
+				modifiers: ["spicy", "vegetarian"],
+			},
+			{
+				name: "Zucchini Chips",
+				description:
+					"Krispy breaded zucchini chips that have been covered in bread crumbs and air-fried to perfection. This delectable treat is served with a savory lemon yogurt dip",
+				price: 8,
+				modifiers: ["vegetarian"],
+			},
+			{
+				name: "Jalapeno Poppers",
+				description:
+					"By including the crispy pits of bacon inside of the jalapeno along with sharp cheddar and cream cheese, the perfect pepper taste is now achievable in just one bite",
+				price: 9,
+				modifiers: ["spicy"],
+			},
+		],
+	},
+	{
 		name: "Pita Bread Pizzas",
 		image: Pizza,
 		description: "A selection of our finest pita bread pizzas",
@@ -164,41 +199,6 @@ export const Menu: {
 				description:
 					"A smash burger beef patty served on brioche buns with all the signature toppings, a side of fries, and our signature sauce",
 				price: 11.5,
-			},
-		],
-	},
-	{
-		name: "Appetizers",
-		image: Nachos,
-		description: "Pre-game Snacks",
-		items: [
-			{
-				name: "7 Layer Nachos",
-				description:
-					"a great new twist on the classic 7 layers, these sharable nachos are adjourned with beans, sour cream, guacamole, cheese, green onions, olives, and tomatoes",
-				price: 12,
-				modifiers: ["vegetarian"],
-			},
-			{
-				name: "Green Chile Queso",
-				description:
-					"This spicy and sharable 3-cheese queso is served with chips and will be enjoyed by the whole party",
-				price: 10,
-				modifiers: ["spicy", "vegetarian"],
-			},
-			{
-				name: "Zucchini Chips",
-				description:
-					"Krispy breaded zucchini chips that have been covered in bread crumbs and air-fried to perfection. This delectable treat is served with a savory lemon yogurt dip",
-				price: 8,
-				modifiers: ["vegetarian"],
-			},
-			{
-				name: "Jalapeno Poppers",
-				description:
-					"By including the crispy pits of bacon inside of the jalapeno along with sharp cheddar and cream cheese, the perfect pepper taste is now achievable in just one bite",
-				price: 9,
-				modifiers: ["spicy"],
 			},
 		],
 	},
