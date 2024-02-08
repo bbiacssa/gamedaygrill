@@ -82,7 +82,7 @@ export default function Cart() {
 										>
 											<div>
 												<div className="flex items-center gap-2">
-													<h1 className="text-lg font-bold text-white">
+													<h2 className="text-lg font-bold text-white">
 														{currentItem.quantity >
 														1
 															? currentItem.quantity +
@@ -91,10 +91,10 @@ export default function Cart() {
 																	.name
 															: currentItem.item
 																	.name}
-													</h1>
+													</h2>
 													<AlertDialogTrigger
 														className="opacity-0 transition-opacity duration-300 focus:opacity-100 active:opacity-100"
-														tabIndex={1}
+														tabIndex={-1}
 														aria-label={`remove ${currentItem.item.name} from cart`}
 													>
 														<X
@@ -162,7 +162,7 @@ export default function Cart() {
 								);
 							})}
 						</ScrollArea>
-						<h1>
+						<h2>
 							subtotal:{" "}
 							<span className="font-bold">
 								$
@@ -173,7 +173,7 @@ export default function Cart() {
 									)
 									.toFixed(2)}
 							</span>
-						</h1>
+						</h2>
 						<Button
 							className="w-full"
 							disabled={isLoading}
@@ -186,7 +186,7 @@ export default function Cart() {
 						</Button>
 					</div>
 				) : (
-					<h1>you don&apos;t have anything in your cart!</h1>
+					<p>you don&apos;t have anything in your cart!</p>
 				)}
 			</SheetContent>
 		</Sheet>

@@ -22,14 +22,14 @@ export default function MenuItem({ item }: { item: MenuItem }) {
 			<div key={item.name} className="select-none">
 				<div key={item.name} className="p-2 py-6">
 					<div className="flex items-center gap-2">
-						<h1
+						<h4
 							className={
 								Libre.className +
 								" text-2xl font-bold tracking-wider"
 							}
 						>
 							{item.name.toLowerCase()}
-						</h1>
+						</h4>
 						{item.modifiers?.map((item) => {
 							return (
 								<Tooltip key={item}>

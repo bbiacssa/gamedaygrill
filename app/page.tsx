@@ -52,14 +52,14 @@ export default function About() {
 							/>
 						</div>
 						<div className="flex flex-col items-center justify-center">
-							<h1
+							<h2
 								className={
 									Libre.className +
 									" lsm:text-2xl mb-4 text-2xl font-bold text-beige"
 								}
 							>
 								what we do
-							</h1>
+							</h2>
 							<p className="w-2/3 text-center font-light sm:text-lg">
 								Game Day Grill puts a modern dining experience
 								spin on the game day classics we all know and
@@ -70,7 +70,7 @@ export default function About() {
 						</div>
 					</motion.div>
 					<div className="my-12 h-fit sm:my-8 sm:h-96">
-						<motion.h1
+						<motion.h2
 							initial={{ opacity: 0 }}
 							whileInView={{ opacity: 1 }}
 							transition={{ duration: 0.75 }}
@@ -81,7 +81,7 @@ export default function About() {
 							}
 						>
 							our team
-						</motion.h1>
+						</motion.h2>
 						<div className="flex flex-col sm:h-2/3 sm:flex-row sm:justify-center sm:gap-8 sm:px-8 md:gap-16">
 							{members.map((member, index) => {
 								return (
@@ -108,14 +108,14 @@ export default function About() {
 													: member.align)
 											}
 										/>
-										<h1
+										<h3
 											className={
 												"z-10 ml-4 text-2xl font-bold text-beige sm:mt-4 sm:text-xl " +
 												Libre.className
 											}
 										>
 											{member.name}
-										</h1>
+										</h3>
 										<p className="z-10 mb-4 ml-4 font-light">
 											{member.details}
 										</p>
@@ -143,14 +143,14 @@ export default function About() {
 							animate={{ opacity: 1, y: 0 }}
 							className="col-span-3 flex h-full flex-col items-center justify-center text-center md:col-span-1"
 						>
-							<h1
+							<h2
 								className={
 									"mb-2 text-lg text-beige md:text-2xl " +
 									Libre.className
 								}
 							>
 								interested in reserving?
-							</h1>
+							</h2>
 							<p className="mb-4 w-2/3 md:text-lg">
 								either shoot us an email at the address shown
 								below or give us a phone call. we&apos;ll try
@@ -206,28 +206,28 @@ export default function About() {
 						</motion.div>
 						<div className="col-span-3 flex h-full flex-col items-center justify-center gap-4 text-center md:col-span-1">
 							<div>
-								<h1
+								<h2
 									className={
 										"mb-1 text-lg text-beige md:text-2xl " +
 										Libre.className
 									}
 								>
 									location
-								</h1>
+								</h2>
 								<p className="md:text-xl">
 									2645 Wilkinson Street <br />
 									Windsor Mill, MA 21244
 								</p>
 							</div>
 							<div>
-								<h1
+								<h2
 									className={
 										"mb-1 text-lg text-beige md:text-2xl " +
 										Libre.className
 									}
 								>
 									hours
-								</h1>
+								</h2>
 								<p className="md:text-xl">
 									<b>Lunch</b>
 									<br />
@@ -254,7 +254,7 @@ export default function About() {
 						className="mt-8 grid h-fit grid-cols-5 bg-zinc-900 font-normal tracking-wider md:grid-cols-2"
 					>
 						<div className="col-span-3 flex flex-col items-center justify-center gap-1 p-4 text-center text-sm md:col-span-1 md:gap-2">
-							<h1
+							<h2
 								className={
 									Libre.className +
 									" tracking-normal text-beige md:text-xl"
@@ -262,12 +262,12 @@ export default function About() {
 							>
 								Ben Barber Innovation Academy <br /> Chapter 1
 								&mdash; 02-0872
-							</h1>
-							<h1 className="">
+							</h2>
+							<p className="">
 								Kaitlyn Ferguson, Gabriel Gomez, Kaden Nguyen
-							</h1>
-							<h1>Ben Barber Innovation Academy</h1>
-							<h1>Mansfield, TX</h1>
+							</p>
+							<p>Ben Barber Innovation Academy</p>
+							<p>Mansfield, TX</p>
 						</div>
 						<div className="order-1 col-span-2 grid place-items-center md:col-span-1 md:p-4">
 							<Image

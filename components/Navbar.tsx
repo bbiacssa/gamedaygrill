@@ -105,9 +105,9 @@ export default function Navbar({
 		<>
 			<div className="pointer-events-none fixed z-10 h-32 w-full bg-gradient-to-b from-black"></div>
 			<div className="fixed z-20 grid w-full grid-cols-[1fr_auto_1fr] items-center gap-4 p-4 py-8">
-				<div className={"mr-auto flex w-full items-center gap-8 pl-4"}>
+				<nav className={"mr-auto flex w-full items-center gap-8 pl-4"}>
 					<Navigation name={name} />
-				</div>
+				</nav>
 
 				<Image
 					src="/images/logos-theme-light.svg"

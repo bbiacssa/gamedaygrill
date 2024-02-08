@@ -5,7 +5,7 @@ import { Menu } from "@/app/config";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import Category from "@/components/Category";
+import Category, { Londrina } from "@/components/Category";
 
 export default function MenuComponent() {
 	if (!Menu) throw new Error("Menu not found");

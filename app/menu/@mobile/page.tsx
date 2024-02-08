@@ -48,16 +48,16 @@ export default function Page() {
 							priority={true}
 							className="absolute left-0 top-0 -z-10 h-full w-full object-cover opacity-50 blur-sm"
 						/>
-						<h1
+						<h2
 							className={
 								Londrina.className + " text-5xl tracking-wide"
 							}
 						>
 							{item.name.toLowerCase()}
-						</h1>
-						<p className="text-lg tracking-wider">
+						</h2>
+						<h3 className="text-lg tracking-wider">
 							{item.description.toLowerCase()}
-						</p>
+						</h3>
 					</div>
 					<div className="p-4">
 						{item.items.map((menuItem) => {
