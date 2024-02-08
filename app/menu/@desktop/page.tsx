@@ -97,7 +97,7 @@ export default function MenuComponent() {
 												"h-full w-full object-cover"
 											}
 											src={categoryItem.image}
-											alt={categoryItem.name}
+											alt={categoryItem.alt}
 											priority={true}
 										/>
 									</motion.div>

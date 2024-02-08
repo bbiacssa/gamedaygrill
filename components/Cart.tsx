@@ -52,7 +52,10 @@ export default function Cart() {
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
-				<div className="absolute right-8 -z-10 grid size-12 cursor-pointer place-items-center rounded-md bg-zinc-700 transition-all hover:bg-zinc-800 active:scale-95">
+				<button
+					aria-label="your cart"
+					className="absolute right-8 -z-10 grid size-12 cursor-pointer place-items-center rounded-md bg-zinc-700 transition-all hover:bg-zinc-800 active:scale-95"
+				>
 					<ShoppingCart size={24} />
 					{items.length > 0 && (
 						<div className="absolute -right-2 -top-2 grid size-6 place-items-center rounded-full bg-red-700 text-sm">
@@ -61,7 +64,7 @@ export default function Cart() {
 							</span>
 						</div>
 					)}
-				</div>
+				</button>
 			</SheetTrigger>
 			<SheetContent>
 				<SheetHeader>
@@ -73,48 +76,50 @@ export default function Cart() {
 							{items.map((currentItem, index) => {
 								return (
 									<AlertDialog key={index}>
-										<AlertDialogTrigger asChild>
-											<div
-												key={index}
-												className="group my-3 flex cursor-pointer select-none items-center justify-between transition-transform duration-300 active:scale-95"
-											>
-												<div>
-													<div className="flex items-center gap-2">
-														<h1 className="text-lg font-bold text-white">
-															{currentItem.quantity >
-															1
-																? currentItem.quantity +
-																	"x " +
-																	currentItem
-																		.item
-																		.name
-																: currentItem
-																		.item
-																		.name}
-														</h1>
+										<div
+											key={index}
+											className="group my-3 flex cursor-pointer select-none items-center justify-between"
+										>
+											<div>
+												<div className="flex items-center gap-2">
+													<h1 className="text-lg font-bold text-white">
+														{currentItem.quantity >
+														1
+															? currentItem.quantity +
+																"x " +
+																currentItem.item
+																	.name
+															: currentItem.item
+																	.name}
+													</h1>
+													<AlertDialogTrigger
+														className="opacity-0 transition-opacity duration-300 focus:opacity-100 active:opacity-100"
+														tabIndex={1}
+														aria-label={`remove ${currentItem.item.name} from cart`}
+													>
 														<X
 															strokeWidth={3}
-															className="mr-2 size-4 stroke-red-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+															className="mr-2 size-4 stroke-red-400"
 														/>
-													</div>
-
-													<h2 className="mr-4 text-sm font-light">
-														{
-															currentItem.item
-																.description
-														}
-													</h2>
+													</AlertDialogTrigger>
 												</div>
 
-												<h3 className="text-sm font-bold text-white">
-													$
-													{(
-														currentItem.item.price *
-														currentItem.quantity
-													).toFixed(2)}
-												</h3>
+												<h2 className="mr-4 text-sm font-light">
+													{
+														currentItem.item
+															.description
+													}
+												</h2>
 											</div>
-										</AlertDialogTrigger>
+
+											<h3 className="text-sm font-bold text-white">
+												$
+												{(
+													currentItem.item.price *
+													currentItem.quantity
+												).toFixed(2)}
+											</h3>
+										</div>
 										<AlertDialogContent>
 											<AlertDialogHeader>
 												<AlertDialogTitle>

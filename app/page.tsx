@@ -100,7 +100,7 @@ export default function About() {
 										<Image
 											src={member.image}
 											priority={true}
-											alt={member.name}
+											alt={"portrait of " + member.name}
 											className={
 												"absolute -z-10 h-full w-full bg-center object-cover sm:static " +
 												(!member.align
@@ -135,8 +135,8 @@ export default function About() {
 							src={flouredHands}
 							priority={true}
 							quality={50}
-							alt="food bowl"
-							className="col-span-2 h-full w-full object-cover md:col-span-1"
+							alt="floured hands"
+							className="col-span-2 h-full w-full object-cover object-[50%_30%] md:col-span-1"
 						/>
 						<motion.div
 							initial={{ opacity: 0, y: -20 }}
@@ -242,7 +242,7 @@ export default function About() {
 						<Image
 							priority={true}
 							src={sandwich}
-							alt="food bowl"
+							alt="sandwich"
 							className="col-span-2 h-full w-full object-cover md:col-span-1"
 						/>
 					</motion.div>
@@ -273,7 +273,7 @@ export default function About() {
 							<Image
 								priority={true}
 								src={seizeTheOpportunity}
-								alt={"Seize the Opportunity"}
+								alt={"Seize the Opportunity BPA Logo"}
 								className="my-4 h-full bg-white object-contain p-2 md:h-fit md:w-4/5 md:p-6"
 							/>
 						</div>

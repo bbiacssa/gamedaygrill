@@ -69,11 +69,13 @@ export const Menu: {
 	image: StaticImageData;
 	description: string;
 	items: MenuItem[];
+	alt: string;
 }[] = [
 	{
 		name: "Appetizers",
 		image: Nachos,
 		description: "Pre-game Snacks",
+		alt: "a plate of nachos",
 		items: [
 			{
 				name: "7 Layer Nachos",
@@ -109,6 +111,7 @@ export const Menu: {
 		name: "Pita Bread Pizzas",
 		image: Pizza,
 		description: "A selection of our finest pita bread pizzas",
+		alt: "a margherita pizza",
 		items: [
 			{
 				name: "Buffalo Chicken",
@@ -143,6 +146,7 @@ export const Menu: {
 		name: "Straight from the Grill",
 		description: "A selection of our finest grilled foods",
 		image: Wings,
+		alt: "a plate of sauced chicken wings",
 		items: [
 			{
 				name: "Brisket",
@@ -174,6 +178,7 @@ export const Menu: {
 		name: "Entrees",
 		image: Tacos,
 		description: "A selection of our favorite game day classics",
+		alt: "steak tacos",
 		items: [
 			{
 				name: "Brisket Tacos",
@@ -206,6 +211,7 @@ export const Menu: {
 		name: "Kids Menu",
 		image: Sliders,
 		description: "For game lovers with smaller appetites",
+		alt: "a slider on a cutting board",
 		items: [
 			{
 				name: "Mac and Cheese",
@@ -232,6 +238,7 @@ export const Menu: {
 		name: "Drinks",
 		image: Lemonade,
 		description: "A selection of classic game day drinks",
+		alt: "a glass of water with a lemon slice",
 		items: [
 			{
 				name: "Fountain Soda",
@@ -255,6 +262,7 @@ export const Menu: {
 		name: "Desserts",
 		image: Dessert,
 		description: "Sweet Treats for the post-game wrap up",
+		alt: "an apple pie with a slice cut out",
 		items: [
 			{
 				name: "Chocolate Chip Cookie Cake",
@@ -295,6 +303,7 @@ import SuperBowl from "@/public/images/super bowl.jpg";
 import SaintPatricks from "@/public/images/saint patricks.jpg";
 import Easter from "@/public/images/easter.jpg";
 import MemorialDay from "@/public/images/memorial day.jpg";
+import IndependenceDay from "@/public/images/independence day.jpg";
 import { Libre_Baskerville } from "next/font/google";
 
 type Event = {
@@ -316,11 +325,13 @@ type Event = {
 		| "dec";
 	day: number;
 	align?: string;
+	alt: string;
 };
 
 export const Events: Event[] = [
 	{
 		name: "super bowl",
+		alt: "a super bowl trophy",
 		description:
 			"help us live up to our name by watching american football with us. we'll have a special menu and drink specials all day long!",
 		image: SuperBowl,
@@ -330,6 +341,7 @@ export const Events: Event[] = [
 	},
 	{
 		name: "valentines day",
+		alt: "a couple sitting together",
 		description:
 			"bring a loved one with you to celebrate valentines day, and get a free dessert!",
 		image: Love,
@@ -339,6 +351,7 @@ export const Events: Event[] = [
 	},
 	{
 		name: "st. patricks day",
+		alt: "saint patricks day themed cookies arranged in a heart",
 		description:
 			"hope you're wearing green, because we're celebrating st. patty's day with a bang. don't get pinched!",
 		image: SaintPatricks,
@@ -347,6 +360,7 @@ export const Events: Event[] = [
 	},
 	{
 		name: "easter",
+		alt: "easter bunny chocolate and eggs",
 		description:
 			"we're hosting an easter egg hunt for the kids, and a special easter brunch for the adults. find the golden egg and win a prize!",
 		image: Easter,
@@ -355,6 +369,7 @@ export const Events: Event[] = [
 	},
 	{
 		name: "memorial day",
+		alt: "an american flag",
 		description:
 			"join us for a special memorial day event, where we'll be honoring our veterans and active duty military!",
 		image: MemorialDay,
@@ -362,7 +377,17 @@ export const Events: Event[] = [
 		day: 27,
 	},
 	{
+		name: "independence day",
+		alt: "fireworks",
+		description:
+			"come celebrate the anniversary of our country's independence with us! we'll be offering a special menu, so don't miss out!",
+		image: IndependenceDay,
+		month: "jul",
+		day: 4,
+	},
+	{
 		name: "anniversary",
+		alt: "people clinking glasses at a party with confetti",
 		description:
 			"come celebrate our anniversary with us! as a thank you to our loyal customers, we'll be offering a special discount on all food and drinks for a limited time!",
 		image: Party,

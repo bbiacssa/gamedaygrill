@@ -5,7 +5,7 @@ import { Rubik } from "next/font/google";
 import Image from "next/image";
 import ShoppingCart from "./Cart";
 import { useWindowDimensions } from "@/lib/useWindowDimensions";
-import { Plus } from "lucide-react";
+import { ArrowRight, Plus } from "lucide-react";
 import { motion } from "framer-motion";
 
 const lightRubik = Rubik({
@@ -39,14 +39,16 @@ function Navigation({
 
 	return isCollapsed ? (
 		<div className="relative select-none">
-			<div className="flex gap-2">
+			<div
+				className="flex gap-2"
+				onClick={() => setDrawerOpen(!drawerOpen)}
+			>
 				<motion.div
 					animate={{
 						rotateZ: drawerOpen ? 45 : 0,
 					}}
-					onClick={() => setDrawerOpen(!drawerOpen)}
 				>
-					<Plus />
+					<ArrowRight />
 				</motion.div>
 				<span
 					className={`text-base tracking-widest ${boldRubik.className}`}

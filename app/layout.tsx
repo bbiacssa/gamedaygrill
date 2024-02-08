@@ -30,7 +30,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<CartContext>
-				<body className={font.className + " dark bg-gunmetal"}>
+				<body
+					className={font.className + " dark bg-gunmetal"}
+					suppressHydrationWarning
+				>
 					<Toaster position="bottom-left" richColors />
 					<TooltipProvider>{children}</TooltipProvider>
 				</body>

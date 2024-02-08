@@ -41,6 +41,7 @@ export default function MenuItem({ item }: { item: MenuItem }) {
 							);
 						})}
 						<Button
+							aria-label={`add ${item.name} to cart`}
 							variant={"ghost"}
 							size="icon"
 							className="size-8 p-1"
@@ -57,6 +58,7 @@ export default function MenuItem({ item }: { item: MenuItem }) {
 							<Plus />
 						</Button>
 						<Button
+							aria-label={`remove ${item.name} from cart`}
 							className={
 								"size-8 p-1 transition-opacity duration-300 " +
 								(items.some(
@@ -67,6 +69,12 @@ export default function MenuItem({ item }: { item: MenuItem }) {
 									: "opacity-0")
 							}
 							size="icon"
+							aria-hidden={
+								!items.some(
+									(currentItem) =>
+										currentItem.item.name == item.name
+								)
+							}
 							disabled={
 								!items.some(
 									(currentItem) =>
@@ -86,11 +94,12 @@ export default function MenuItem({ item }: { item: MenuItem }) {
 							}}
 							variant="ghost"
 						>
-							<Minus className="w-full h-full" />
+							<Minus className="h-full w-full" />
 						</Button>
 						<p
+							aria-label={item.price + " dollars"}
 							className={
-								"font-bold text-xl ml-auto tracking-wider italic " +
+								"ml-auto text-xl font-bold italic tracking-wider " +
 								ItalicLibre.className
 							}
 						>
@@ -98,7 +107,7 @@ export default function MenuItem({ item }: { item: MenuItem }) {
 						</p>
 					</div>
 					{item.description && (
-						<p className="text-lg font-light tracking-wide mt-1">
+						<p className="mt-1 text-lg font-light tracking-wide">
 							{item.description.toLowerCase()}
 						</p>
 					)}

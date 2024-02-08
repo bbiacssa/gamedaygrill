@@ -41,7 +41,7 @@ export default function EventsComponent() {
 									/>
 									<div className="absolute bottom-0 z-10 h-1/2 w-[calc(100%_-_1rem)] bg-gradient-to-t from-black"></div>
 									<div className="absolute bottom-0 z-20 flex h-fit w-full items-end gap-4 pr-20">
-										<div className="z-10 flex h-fit w-20 flex-col items-center justify-end bg-zinc-800 p-2">
+										<div className="z-10 flex h-fit w-20 flex-col items-center justify-end bg-zinc-800 p-3 md:p-2">
 											<h1 className="text-4xl">
 												{event.day}
 											</h1>
