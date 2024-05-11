@@ -246,38 +246,6 @@ export default function About() {
 							className="col-span-2 h-full w-full object-cover md:col-span-1"
 						/>
 					</motion.div>
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						transition={{ duration: 1 }}
-						viewport={{ once: true }}
-						className="mt-8 grid h-fit grid-cols-5 bg-zinc-900 font-normal tracking-wider md:grid-cols-2"
-					>
-						<div className="col-span-3 flex flex-col items-center justify-center gap-1 p-4 text-center text-sm md:col-span-1 md:gap-2">
-							<h2
-								className={
-									Libre.className +
-									" tracking-normal text-beige md:text-xl"
-								}
-							>
-								Ben Barber Innovation Academy <br /> Chapter 1
-								&mdash; 02-0872
-							</h2>
-							<p className="">
-								Kaitlyn Ferguson, Gabriel Gomez, Kaden Nguyen
-							</p>
-							<p>Ben Barber Innovation Academy</p>
-							<p>Mansfield, TX</p>
-						</div>
-						<div className="order-1 col-span-2 grid place-items-center md:col-span-1 md:p-4">
-							<Image
-								priority={true}
-								src={seizeTheOpportunity}
-								alt={"Seize the Opportunity BPA Logo"}
-								className="my-4 h-full bg-white object-contain p-2 md:h-fit md:w-4/5 md:p-6"
-							/>
-						</div>
-					</motion.div>
 				</div>
 			</div>
 		</div>
